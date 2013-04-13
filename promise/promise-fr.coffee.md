@@ -148,9 +148,9 @@ Ainsi la fonction pourra être utilisé de la façon suivante:
       .then (user) -> console.log user
       .fail (err) -> console.err err
 
- ### jQuery
- jQuery utilise les promesses depuis la version 1.5. 
- Si l'on souhaite convertir une fonction asynchrone en prommesse, Defered va devenir très utile. 
+### jQuery
+jQuery utilise les promesses depuis la version 1.5. 
+Si l'on souhaite convertir une fonction asynchrone en prommesse, Defered va devenir très utile. 
 
     promiseFunc = ->
       deferred = new jQuery.Deferred()
