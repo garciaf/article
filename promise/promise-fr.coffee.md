@@ -1,12 +1,11 @@
 # Les prommesses expliqué avec Ken et Barbie
+## L'histoire de ken et Barbie
 La vie est pleine de promess nous en faisons tous les jours. Prenons par exemple ken et barbie:
-
 
     ken = new PerfectMan()
     barbie = new PerfectWoman()
 
 Les deux sont parfaits et maintenant voyons comment ses deux personnes vont intéragir. 
-
 
     ken.marrie(barbie)
 
@@ -20,7 +19,10 @@ Ok c'est pas mal mais il se passe quoi aprés ? et bien dans les films ça s'arr
       .then => ken.die()
       .then => barbie.die()
 
-Et voilà une vie parfaite terminé. Mais tout ne se réalise pas toujours comme on le souhaite, et les promesses que l'on fait ne sont pas toujours tenues. 
+Et voilà une vie parfaite terminé. 
+
+## L'histoire des gens nomaux
+Mais tout ne se réalise pas toujours comme on le souhaite, et les promesses que l'on fait ne sont pas toujours tenues. 
 
     ted = new Man()
     robin = new Woman()
@@ -109,7 +111,7 @@ Pas vraiment sexy, si on décide d'utiliser les promesses, le code se transforme
 Le code est beaucoup plus lisible et du code plus claire est du code qui se maintient mieux. 
 
 ## Transformer des fonctions asynchrone en promesses
-## Node
+### Node
 Tout cela est bien beau mais l'essentiel du monde javascript est plutôt friand de callback. 
 Si l'on souhaite néanmoins utiliser les promesses au lieu des callback. 
 On pourra utiliser la librairie Q excellente de cette façon :
@@ -146,7 +148,7 @@ Ainsi la fonction pourra être utilisé de la façon suivante:
       .then (user) -> console.log user
       .fail (err) -> console.err err
 
- ## jQuery
+ ### jQuery
  jQuery utilise les promesses depuis la version 1.5. 
  Si l'on souhaite convertir une fonction asynchrone en prommesse, Defered va devenir très utile. 
 
@@ -164,10 +166,11 @@ et on utilisera toujours de cette façon:
     $.when(promiseFunc).then ((res) ->
         alert status + ", things are going well"
  
-Pour terminer ce petit article quelques liens pour aller plus loin, car certains points n'ont pas été abordé. 
+## Liens
+Pour terminer ce petit article quelques liens pour aller plus loin, car tout n'a pas été abordé. 
 Et il y a beaucoup d'autre chose à en dire :
 * [Q](http://documentup.com/kriskowal/q/)
 * [Deferred object jQuery](http://api.jquery.com/category/deferred-object/)
 
-# conclusion 
-Bien évidemment si vous souhaiter rajouter des points compléter ou corriger, il ne vous reste plus qu'à forker. 
+## Conclusion 
+Bien évidemment si vous souhaitez rajouter des points compléter ou corriger, il ne vous reste plus qu'à forker. 
