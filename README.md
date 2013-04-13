@@ -5,10 +5,12 @@ La vie est pleine de promess nous en faisons tous les jours. Prenons par exemple
     ken = new PerfectMan()
     barbie = new PerfectWoman()
 
+
 Les deux sont parfaits et maintenant voyons comment ses deux personnes vont intéragir. 
 ```coffeescript
 ken.marry(barbie)
 ```
+
 Ok c'est pas mal mais il se passe quoi aprés ? et bien dans les films ça s'arrête là, mais dans le monde réel ça continue.
 ```coffeescript
 ken.marry(barbie)
@@ -18,6 +20,7 @@ ken.marry(barbie)
   .then => ken.die()
   .then => barbie.die()
 ```
+
 Et voilà une vie parfaite terminé. 
 
 ## L'histoire des gens nomaux
@@ -26,12 +29,14 @@ Mais tout ne se réalise pas toujours comme on le souhaite, et les promesses que
 ted = new Man()
 robin = new Woman()
 ```
+
 Prenons le cas de ted Mosby et Robin scherbatsky, le plan ne va pas se réaliser comme prévu. 
 ```coffeescript
 ted.marry(robin)
   .then => ted.find("job")
   .fail => otherWoman = ted.find("otherWoman")
 ```
+
 Bon dans notre cas ted vas passer par la fonction fail, car robin n'est pas prête à s'engager dans une relation. Donc ted devra trouverune autre femme.
 
 Parfois dans la vie pour réaliser une chose il faut avoir remplie plusieurs conditions. 
@@ -47,6 +52,7 @@ $.when(me.find("job"), me.do("sport"), me.earn("money"), me.do("surgery"))
   .then => barbie.die()
   .fail(error) => me.find("otherWoman")
 ```
+
 Et voilà vous avez épousé barbie et bravo mais si jamais une des étapes à échoué vous n'aurez plus qu'à trouver une autre femme.
 Bref c'est bien beau tout ça mais c'est quoi le lien avec javascript ? Et bien c'est la même chose (les histoires d'amours en moins) 
 
@@ -63,6 +69,7 @@ user.findWhere(name:"john").success(user) ->
     fs.write response, (status) ->
       console.log "workflow finished"
 ```
+
 On changera ce code avec les promesses de la façon suivante :
 ```coffeescript
 user.findWhere(name:"john")
@@ -70,6 +77,7 @@ user.findWhere(name:"john")
   .then (response) -> fs.write response
   .then (status) -> console.log "Workflow finished" 
 ```
+
 Le code devient beaucoup plus lisible et plus facile à comprendre.
 Prenons le cas où nous devont faire appel à deux fonctions asynchrone et traiter les données trouvé.
 Une approche possible avec Backbone sera :
@@ -84,11 +92,13 @@ fetchOptions =
 @collection1.fetch fetchOptions
 @collection2.fetch fetchOptions
 ```
+
 On pourra utiliser jquery et la fonction when qui fera la même chose:
 ```coffeescript
 $.when(@clicks.fetch(data: @params), @installs.fetch(data: @params))
   .done => @prepareTableData()
 ```
+
 Les deux codes font exactement la même chose, mais dans le deuxième cas on gagne en clareté et nombre de lignes de codes.
 Bien évéidemment vous pourrez faire toutes ses choses aussi du code serveur avec la librairie Q pour node qui est excellente. 
 Voyons un workflow avec node :
@@ -99,6 +109,7 @@ user.findWhere(name:"john").success(user) ->
       user.save(status: "message send"). success(err, res) ->
         console.log "workflow finished"
 ```
+
 Pas vraiment sexy, si on décide d'utiliser les promesses, le code se transforme de la façon suivante
 ```coffeescript
 user.findWhere(name:"john")
@@ -107,6 +118,7 @@ user.findWhere(name:"john")
   .then (status) -> user.save(status: "message send")
   .then (status) -> console.log "Workflow finished" 
 ```
+
 Le code est beaucoup plus lisible et du code plus claire est du code qui se maintient mieux. 
 
 ## Transformer des fonctions asynchrone en promesses
@@ -119,6 +131,7 @@ find: (email, callback) ->
   @query "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email, (err, res) ->
     callback err, res[0]
 ```
+
 deviendra : 
 ```coffeescript
 find: (email) ->
@@ -130,12 +143,14 @@ find: (email) ->
     else
       deferred.resolve res
   return deferred.promise
+
           
 Une notation plus courte pourra être utilisé : 
 
 find (email) ->
   Q.nfcall @query, "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
 ```
+
 ou encore: 
 ```coffeescript
 find (email) ->
@@ -148,6 +163,7 @@ User.find("test@mail.com")
   .then (user) -> console.log user
   .fail (err) -> console.err err
 ```
+
 ### jQuery
 jQuery utilise les promesses depuis la version 1.5. 
 Si l'on souhaite convertir une fonction asynchrone en prommesse, Defered va devenir très utile. 
@@ -162,14 +178,15 @@ promiseFunc = ->
       deferred.resolve res
   return deferred.promise()
        
+```
 et on utilisera toujours de cette façon:
-
-
+```coffeescript
 $.when(promiseFunc).then (res) ->
   alert status + ", things are going well"
+```
  
 ## Liens
-```
+
 Pour terminer ce petit article quelques liens pour aller plus loin, car tout n'a pas été abordé. 
 Et il y a beaucoup d'autre chose à en dire :
 * [Q](http://documentup.com/kriskowal/q/)

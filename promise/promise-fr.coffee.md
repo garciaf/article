@@ -5,9 +5,11 @@ La vie est pleine de promess nous en faisons tous les jours. Prenons par exemple
     ken = new PerfectMan()
     barbie = new PerfectWoman()
 
+
 Les deux sont parfaits et maintenant voyons comment ses deux personnes vont intéragir. 
 
     ken.marry(barbie)
+
 
 Ok c'est pas mal mais il se passe quoi aprés ? et bien dans les films ça s'arrête là, mais dans le monde réel ça continue.
 
@@ -18,6 +20,7 @@ Ok c'est pas mal mais il se passe quoi aprés ? et bien dans les films ça s'arr
       .then => ken.die()
       .then => barbie.die()
 
+
 Et voilà une vie parfaite terminé. 
 
 ## L'histoire des gens nomaux
@@ -26,11 +29,13 @@ Mais tout ne se réalise pas toujours comme on le souhaite, et les promesses que
     ted = new Man()
     robin = new Woman()
 
+
 Prenons le cas de ted Mosby et Robin scherbatsky, le plan ne va pas se réaliser comme prévu. 
 
     ted.marry(robin)
       .then => ted.find("job")
       .fail => otherWoman = ted.find("otherWoman")
+
 
 Bon dans notre cas ted vas passer par la fonction fail, car robin n'est pas prête à s'engager dans une relation. Donc ted devra trouverune autre femme.
 
@@ -46,6 +51,7 @@ Si on suppose que barbie est uniquement intéressé par l'argent. Si on veut ép
       .then => me.die()
       .then => barbie.die()
       .fail(error) => me.find("otherWoman")
+
 
 Et voilà vous avez épousé barbie et bravo mais si jamais une des étapes à échoué vous n'aurez plus qu'à trouver une autre femme.
 Bref c'est bien beau tout ça mais c'est quoi le lien avec javascript ? Et bien c'est la même chose (les histoires d'amours en moins) 
@@ -63,12 +69,14 @@ Prenons un exemple classique:
         fs.write response, (status) ->
           console.log "workflow finished"
 
+
 On changera ce code avec les promesses de la façon suivante :
 
     user.findWhere(name:"john")
       .then (user) -> Email.send(user.email)
       .then (response) -> fs.write response
       .then (status) -> console.log "Workflow finished" 
+
 
 Le code devient beaucoup plus lisible et plus facile à comprendre.
 Prenons le cas où nous devont faire appel à deux fonctions asynchrone et traiter les données trouvé.
@@ -84,10 +92,12 @@ Une approche possible avec Backbone sera :
     @collection1.fetch fetchOptions
     @collection2.fetch fetchOptions
 
+
 On pourra utiliser jquery et la fonction when qui fera la même chose:
 
     $.when(@clicks.fetch(data: @params), @installs.fetch(data: @params))
       .done => @prepareTableData()
+
 
 Les deux codes font exactement la même chose, mais dans le deuxième cas on gagne en clareté et nombre de lignes de codes.
 Bien évéidemment vous pourrez faire toutes ses choses aussi du code serveur avec la librairie Q pour node qui est excellente. 
@@ -99,6 +109,7 @@ Voyons un workflow avec node :
           user.save(status: "message send"). success(err, res) ->
             console.log "workflow finished"
 
+
 Pas vraiment sexy, si on décide d'utiliser les promesses, le code se transforme de la façon suivante
 
     user.findWhere(name:"john")
@@ -106,6 +117,7 @@ Pas vraiment sexy, si on décide d'utiliser les promesses, le code se transforme
       .then (response) -> fs.write response
       .then (status) -> user.save(status: "message send")
       .then (status) -> console.log "Workflow finished" 
+
 
 Le code est beaucoup plus lisible et du code plus claire est du code qui se maintient mieux. 
 
@@ -119,6 +131,7 @@ On pourra utiliser la librairie Q excellente de cette façon :
       @query "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email, (err, res) ->
         callback err, res[0]
 
+
 deviendra : 
 
     find: (email) ->
@@ -130,11 +143,13 @@ deviendra :
         else
           deferred.resolve res
       return deferred.promise
+
               
 Une notation plus courte pourra être utilisé : 
 
     find (email) ->
       Q.nfcall @query, "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
+
 
 ou encore: 
 
@@ -147,6 +162,7 @@ Ainsi la fonction pourra être utilisé de la façon suivante:
     User.find("test@mail.com")
       .then (user) -> console.log user
       .fail (err) -> console.err err
+
 
 ### jQuery
 jQuery utilise les promesses depuis la version 1.5. 
@@ -162,11 +178,12 @@ Si l'on souhaite convertir une fonction asynchrone en prommesse, Defered va deve
           deferred.resolve res
       return deferred.promise()
            
+
 et on utilisera toujours de cette façon:
 
-    
     $.when(promiseFunc).then (res) ->
       alert status + ", things are going well"
+
  
 ## Liens
 
