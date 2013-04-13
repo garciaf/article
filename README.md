@@ -141,8 +141,9 @@ ou encore:
 find (email) ->
   Q.ninvoke @, "query", "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
 
+```
 Ainsi la fonction pourra être utilisé de la façon suivante: 
-
+```coffeescript
 User.find("test@mail.com")
   .then (user) -> console.log user
   .fail (err) -> console.err err

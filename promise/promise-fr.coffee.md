@@ -141,6 +141,7 @@ ou encore:
     find (email) ->
       Q.ninvoke @, "query", "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
     
+
 Ainsi la fonction pourra être utilisé de la façon suivante: 
 
     User.find("test@mail.com")
