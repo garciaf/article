@@ -1,0 +1,4 @@
+article
+=======
+
+Some blog article
