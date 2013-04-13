@@ -3,8 +3,12 @@ fs = require 'fs'
 
 # Until GitHub has proper Literate CoffeeScript highlighting support
 
-task "readme", "rebuild the readme file", ->
-  source = fs.readFileSync('article/promise-fr.coffee.md').toString()
+turnToReadme = (src, target) ->
+  source = fs.readFileSync(src).toString()
   source = source.replace /\n\n    ([\s\S]*?)\n\n(?!    )/mg, (match, code) ->
     "\n```coffeescript\n#{code.replace(/^    /mg, '')}\n```\n"
-  fs.writeFileSync 'README.md', source
+    fs.writeFileSync target, source
+
+task "readme", "rebuild the readme file", ->
+  turnToReadme 'article/promise-en.coffee.md', "README-en.md"
+  turnToReadme 'article/promise-fr.coffee.md', "README.md"

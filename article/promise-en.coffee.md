@@ -1,6 +1,6 @@
-# Les prommesses expliqué avec Ken et Barbie
-## L'histoire de ken et Barbie
-La vie est pleine de promess nous en faisons tous les jours. Prenons par exemple ken et barbie:
+# prommises explain with Ken and Barbie
+## The story of ken and Barbie
+Life is full of promise, we do it every day. 
     
     ken = new PerfectMan()
     barbie = new PerfectWoman()
