@@ -134,6 +134,7 @@ On pourra utiliser la librairie Q excellente de cette façon :
 
 deviendra : 
 
+
     find: (email) ->
       deferred = Q.defer()
       @query "SELECT `id`, `email` WHERE email = `?` LIMIT 1", 
@@ -142,10 +143,11 @@ deviendra :
           deferred.reject new Error(err)
         else
           deferred.resolve res
-      return deferred.promise
+        return deferred.promise
 
-              
-Une notation plus courte pourra être utilisé : 
+
+Une notation plus courte donnera
+
 
     find (email) ->
       Q.nfcall @query, "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 

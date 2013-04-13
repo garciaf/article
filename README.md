@@ -133,6 +133,7 @@ find: (email, callback) ->
 ```
 
 deviendra : 
+
 ```coffeescript
 find: (email) ->
   deferred = Q.defer()
@@ -142,11 +143,12 @@ find: (email) ->
       deferred.reject new Error(err)
     else
       deferred.resolve res
-  return deferred.promise
+    return deferred.promise
+```
 
-          
-Une notation plus courte pourra être utilisé : 
+Une notation plus courte donnera
 
+```coffeescript
 find (email) ->
   Q.nfcall @query, "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
 ```
