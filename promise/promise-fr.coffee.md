@@ -1,16 +1,15 @@
 # Les prommesses expliqué avec Ken et Barbie
 ## L'histoire de ken et Barbie
 La vie est pleine de promess nous en faisons tous les jours. Prenons par exemple ken et barbie:
-
+    
     ken = new PerfectMan()
     barbie = new PerfectWoman()
 
 Les deux sont parfaits et maintenant voyons comment ses deux personnes vont intéragir. 
 
-    ken.marrie(barbie)
+    ken.marry(barbie)
 
 Ok c'est pas mal mais il se passe quoi aprés ? et bien dans les films ça s'arrête là, mais dans le monde réel ça continue.
-
 
     ken.marry(barbie)
       .then => ken.find(job)
@@ -137,7 +136,7 @@ Une notation plus courte pourra être utilisé :
     find (email) ->
       Q.nfcall @query, "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
 
-    ou encore: 
+ou encore: 
 
     find (email) ->
       Q.ninvoke @, "query", "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
@@ -152,6 +151,7 @@ Ainsi la fonction pourra être utilisé de la façon suivante:
 jQuery utilise les promesses depuis la version 1.5. 
 Si l'on souhaite convertir une fonction asynchrone en prommesse, Defered va devenir très utile. 
 
+    
     promiseFunc = ->
       deferred = new jQuery.Deferred()
       ayncFunction param, (err, res) ->
@@ -163,14 +163,17 @@ Si l'on souhaite convertir une fonction asynchrone en prommesse, Defered va deve
            
 et on utilisera toujours de cette façon:
 
-    $.when(promiseFunc).then ((res) ->
-        alert status + ", things are going well"
+    
+    $.when(promiseFunc).then (res) ->
+      alert status + ", things are going well"
  
 ## Liens
+
 Pour terminer ce petit article quelques liens pour aller plus loin, car tout n'a pas été abordé. 
 Et il y a beaucoup d'autre chose à en dire :
 * [Q](http://documentup.com/kriskowal/q/)
 * [Deferred object jQuery](http://api.jquery.com/category/deferred-object/)
 
 ## Conclusion 
-Bien évidemment si vous souhaitez rajouter des points compléter ou corriger, il ne vous reste plus qu'à forker. 
+
+Bien évidemment si vous souhaitez rajouter des points compléter ou corriger, il ne vous reste plus qu'à forker.
