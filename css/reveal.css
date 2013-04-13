@@ -1202,6 +1202,9 @@ body {
 .alert .reveal .state-background {
 	background: rgba( 200, 50, 30, 0.6 );
 }
+.pink .reveal .state-background {
+	background: rgba( 255, 173, 206, 0.6 );
+}
 .soothe .reveal .state-background {
 	background: rgba( 50, 200, 90, 0.4 );
 }
