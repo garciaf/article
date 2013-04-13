@@ -1,74 +1,442 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Article : Some blog article" />
+	<head>
+		<meta charset="utf-8">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+		<title>Promise with JS</title>
 
-    <title>Article</title>
-  </head>
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
 
-  <body>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/garciaf/article">View on GitHub</a>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-          <h1 id="project_title">Article</h1>
-          <h2 id="project_tagline">Some blog article</h2>
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/garciaf/article/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/garciaf/article/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+	<body>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Promise in Js</h1>
+					<h3>With Ken and Barbie</h3>
+					<p>
+						<small>Created by <a href="http://fabbook.fr">Fabien Garcia</a></small>
+					</p>
+					<a href="#/2" class="image">
+						<img  height="238" src="http://25.media.tumblr.com/tumblr_lgligso2ae1qetts3o1_500.jpg">
+					</a>
+				</section>
+
+				<section>
+					<h2>What is a promise?</h2>
+					<blockquote >
+						a declaration that something will or will not be done, given, etc., by one
+					</blockquote >
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>The story of ken and barbie</h2>
+						<p>Let's take Ken and Barbie:</p>
+						<pre><code class="javascript">
+ken = new PerfectMan()
+barbie = new PerfectWoman()
+					</code></pre>
+					</section>
+					<section>
+						<h2>They met and ken propose to barbie</h2>
+						<p>So this is the classic process</p>
+						<pre><code class="javascript">
+ken.marrie(barbie)
+					</code></pre>
+					</section>
+					<section>
+						<h2>But what happen for real?</h2>
+						<pre><code class="javascript">
+ken.marry(barbie)
+  .then => ken.find(job)
+  .then => child = Sexe(ken, barbie)
+  .then (child) => ken.takeCare(child); barbie.takeCare(child)
+  .then => ken.die()
+  .then => barbie.die()
+					</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Ok that's great but what happen with normal people?</h2>
+					</section>
+					<section>
+						<h2>Have you met Ted?</h2>
+						<pre><code class="javascript">
+ted = new Man()
+robin = new Woman()
+						</code></pre>
+						<p>Ted want to marry but Robin not really ...</p>
+					</section>
+					<section>
+						<h2>What happen when they met?</h2>
+						<pre><code class="javascript">
+ted.marry(robin)
+  .then => ted.find("job")
+  .fail => otherWoman = ted.find("otherWoman")
+  .then => child = Sexe(ken, barbie)
+  .then (child) => ken.takeCare(child); barbie.takeCare(child)
+  .then => ken.die()
+  .then => barbie.die()
+  .fail => HIMYM = Factory("serie")
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>If you want to have barbie</h2>
+					
+					<pre><code class="javascript">
+me = new Man()
+barbie = new PerfectWoman()
+					</code></pre>
+					</section>
+					<section>
+<h2>you are not Ken, so you will have to work hard</h2>
+<pre><code class="jacascript">
+$.when(me.find("job"), me.do("sport"), me.earn("money"), me.do("surgery"))
+  .then => me.marry(barbie)
+  .then => child = Sexe(me, barbie)
+  .then(child) => me.takeCare(child)
+  .then => me.die()
+  .then => barbie.die()
+  .fail(error) => me.find("otherWoman")
 </code></pre>
+					</section>
+				</section>
+				<section>
+					<h1>So what is the link with JS?</h1>
+				</section>
+				<section>
+					<h1>It's the same thing!</h1>
+					<p>Code is just a story</p>
+				</section>
+				<section>
+					<section>
+					<h2>Classic workflow in node</h2>
+					<pre><code class="javascript">
+user.findWhere(name:"john").success(user) ->
+  Email.send(user.email).success(response) ->
+    fs.write response, (status) ->
+      user.save(status: "message send"). success(err, res) ->
+      	console.log "workflow finished"
+					</code></pre>
+					</section>
+					<section>
+						<h2>It will be</h2>
+						<pre><code class="javascript">
+user.findWhere(name:"john")
+  .then (user) -> Email.send(user.email)
+  .then (response) -> fs.write response
+  .then (status) -> user.save(status: "message send")
+  .then (status) -> console.log "Workflow finished" 
+					</code></pre>
+					</section>
+					<section>
+						<h2>If you need data in several place</h2>
+						<h3>Example with backbone</h3>
+						<pre><code class="javascript">
+checkAllFetched = (collection) =>
+  collection.fetched = true
+  if @collection1.fetched and @collection2.fetched
+    @prepareData()
+fetchOptions =
+  success: checkAllFetched
+  data: @params
+@collection1.fetch fetchOptions
+@collection2.fetch fetchOptions
+						</code></pre>
+					</section>
+					<section>
+						<h2>turn with promise</h2>
+						<pre><code class="javascript">
+$.when(@collection1.fetch(data: @params), 
+	@collection2.fetch(data: @params))
+  .done => @prepareData()
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Marvelous Unordered List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+				<section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
 
-<h3>Designer Templates</h3>
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
 
-<h3>Rather Drive Stick?</h3>
+							<section data-markdown>
+							  ## Markdown support
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+							  For those of you who like that sort of thing.
+							  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+							</section>
+					</script>
+				</section>
 
-<h3>Authors and Contributors</h3>
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=cube#/transitions">Cube</a> -
+						<a href="?transition=page#/transitions">Page</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a> -
+						<a href="?transition=linear#/transitions">Linear</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?#/transitions">Default</a>
+					</p>
+				</section>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						Reveal.js comes with a few themes built in: <br>
+						<a href="?theme=sky#/themes">Sky</a> -
+						<a href="?theme=beige#/themes">Beige</a> -
+						<a href="?theme=simple#/themes">Simple</a> -
+						<a href="?theme=serif#/themes">Serif</a> -
+						<a href="?theme=night#/themes">Night</a> -
+						<a href="?#/themes">Default</a>
+					</p>
+					<p>
+						<small>
+							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
+						</small>
+					</p>
+				</section>
 
-<h3>Support or Contact</h3>
+				<section>
+					<section data-state="alert">
+						<h2>Global State</h2>
+						<p>
+							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+							will be added as a class to the document element when the slide is open. This lets you
+							apply broader style changes, like switching the background.
+						</p>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-state="blackout">
+						<h2>"blackout"</h2>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-state="soothe">
+						<h2>"soothe"</h2>
+						<a href="#" class="image navigate-next">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(-90deg);">
+						</a>
+					</section>
+				</section>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+				<section data-state="customevent">
+					<h2>Custom Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Article maintained by <a href="https://github.com/garciaf">garciaf</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						The nice thing about standards is that there are so many to choose from</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
+					</blockquote>
+				</section>
 
-    
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code class="javascript">
+function linkify( selector ) {
+  if( supports3DTransforms ) {
 
-  </body>
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) ) {
+        node.className += ' roll';
+      }
+    };
+  }
+}
+					</code></pre>
+					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Fragmented Views</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<ol>
+							<li class="fragment"><code>any type</code></li>
+							<li class="fragment"><em>of view</em></li>
+							<li class="fragment"><strong>fragments</strong></li>
+						</ol>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's a few styles of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment roll-in">roll-in</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-green">highlight-green</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Spectacular image!</h2>
+					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
+						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
+					</a>
+				</section>
+
+				<section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
+						during a presentation.
+					</p>
+				</section>
+
+				<section>
+					<h2>Stellar Links</h2>
+					<ul>
+						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
+						<li><a href="http://hakim.se/projects/reveal-js">Leave feedback on my site</a></li>
+						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>It's free</h2>
+					<p>
+						reveal.js and <a href="http://www.rvl.io">rvl.io</a> are entirely free but if you'd like to support the projects you can donate below.
+						Donations will go towards hosting and domain costs.
+					</p>
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+						<input type="hidden" name="cmd" value="_donations">
+						<input type="hidden" name="business" value="hakim.elhattab@gmail.com">
+						<input type="hidden" name="lc" value="US">
+						<input type="hidden" name="item_name" value="reveal.js / rvl.io">
+						<input type="hidden" name="no_note" value="0">
+						<input type="hidden" name="currency_code" value="USD">
+						<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					</form>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h3>BY Hakim El Hattab / hakim.se</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: "Beige", // available themes are in /css/theme
+				transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
 </html>
