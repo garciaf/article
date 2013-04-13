@@ -1,3 +1,4 @@
+# Les prommesses expliqué avec Ken et Barbie
 La vie est pleine de promess nous en faisons tous les jours. Prenons par exemple ken et barbie:
 
 
@@ -48,7 +49,9 @@ Si on suppose que barbie est uniquement intéressé par l'argent. Si on veut ép
 Et voilà vous avez épousé barbie et bravo mais si jamais une des étapes à échoué vous n'aurez plus qu'à trouver une autre femme.
 Bref c'est bien beau tout ça mais c'est quoi le lien avec javascript ? Et bien c'est la même chose (les histoires d'amours en moins) 
 
-## Le lien avec javascript
+# Le lien avec javascript
+
+## Exemples 
 
 En js vous pouvez décider de retourner une promesse pour un événement asynchrone. 
 Si tout s'est bien passé alors vous pourrez passez à la suite avec comme argument le ou les valeurs retourné.
@@ -87,3 +90,84 @@ On pourra utiliser jquery et la fonction when qui fera la même chose:
 
 Les deux codes font exactement la même chose, mais dans le deuxième cas on gagne en clareté et nombre de lignes de codes.
 Bien évéidemment vous pourrez faire toutes ses choses aussi du code serveur avec la librairie Q pour node qui est excellente. 
+Voyons un workflow avec node :
+
+    user.findWhere(name:"john").success(user) ->
+      Email.send(user.email).success(response) ->
+        fs.write response, (status) ->
+          user.save(status: "message send"). success(err, res) ->
+            console.log "workflow finished"
+
+Pas vraiment sexy, si on décide d'utiliser les promesses, le code se transforme de la façon suivante
+
+    user.findWhere(name:"john")
+      .then (user) -> Email.send(user.email)
+      .then (response) -> fs.write response
+      .then (status) -> user.save(status: "message send")
+      .then (status) -> console.log "Workflow finished" 
+
+Le code est beaucoup plus lisible et du code plus claire est du code qui se maintient mieux. 
+
+## Transformer des fonctions asynchrone en promesses
+## Node
+Tout cela est bien beau mais l'essentiel du monde javascript est plutôt friand de callback. 
+Si l'on souhaite néanmoins utiliser les promesses au lieu des callback. 
+On pourra utiliser la librairie Q excellente de cette façon :
+
+    find: (email, callback) ->
+      @query "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email, (err, res) ->
+        callback err, res[0]
+
+deviendra : 
+
+    find: (email) ->
+      deferred = Q.defer()
+      @query "SELECT `id`, `email` WHERE email = `?` LIMIT 1", 
+        email, (err, res) ->
+        if err
+          deferred.reject new Error(err)
+        else
+          deferred.resolve res
+      return deferred.promise
+              
+Une notation plus courte pourra être utilisé : 
+
+    find (email) ->
+      Q.nfcall @query, "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
+
+    ou encore: 
+
+    find (email) ->
+      Q.ninvoke @, "query", "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
+    
+Ainsi la fonction pourra être utilisé de la façon suivante: 
+
+    User.find("test@mail.com")
+      .then (user) -> console.log user
+      .fail (err) -> console.err err
+
+ ## jQuery
+ jQuery utilise les promesses depuis la version 1.5. 
+ Si l'on souhaite convertir une fonction asynchrone en prommesse, Defered va devenir très utile. 
+
+    promiseFunc = ->
+      deferred = new jQuery.Deferred()
+      ayncFunction param, (err, res) ->
+        if err
+          deferred.reject err
+        else
+          deferred.resolve res
+      return deferred.promise()
+           
+et on utilisera toujours de cette façon:
+
+    $.when(promiseFunc).then ((res) ->
+        alert status + ", things are going well"
+ 
+Pour terminer ce petit article quelques liens pour aller plus loin, car certains points n'ont pas été abordé. 
+Et il y a beaucoup d'autre chose à en dire :
+* [Q](http://documentup.com/kriskowal/q/)
+* [Deferred object jQuery](http://api.jquery.com/category/deferred-object/)
+
+# conclusion 
+Bien évidemment si vous souhaiter rajouter des points compléter ou corriger, il ne vous reste plus qu'à forker. 
