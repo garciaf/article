@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Hire a monkey for your testing</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+          <h1>Hire monkey</h1>
+          <h3>Vs</h3>
+          <h1>BDD*</h1>
+          <h4>* Behavior-driven development</h4>
+          <p>
+            <small>Created by <a href="http://fabbook.fr/fabien-garcia/about">Fabien Garcia</a></small>
+          </p>
+          <a href="#/2" class="image">
+            <img  height="238" src="img/monkey-on-a-computer.jpg">
+          </a>
+        </section>
+        <section>
+          <section>
+            <h1>How to be sure that your web app is working?</h1>
+          </section>
+          <section>
+            <h1>You can trust developpers</h1>
+          </section>
+          <section>
+            <h1>You test it!</h1>
+            <ol>
+              <li>You open a browser</li>
+              <li>Visit the url of your application</li>
+              <li>Fill in a from</li>
+              <li>Check if the page should have the right content</li>
+            </ol>
+          </section>
+          <section>
+            <h2>And you do it for every single change, and you check for every single page, for every case</h2>
+          </section>
+          <section data-state="soothe">
+            <h1>Advantages</h1>
+            <ul>
+              <li>You will become really good using your application</li>
+            </ul>
+          </section>
+          <section data-state="alert">
+            <h1>Drawbacks</h1>
+            <ul>
+              <li>Time consuming</li>
+              <li>Do not add value to the product</li>
+              <li>Do not let you focus on the user experience</li>
+              <li>Stupid task</li>
+            </ul>
+          </section>
+          <section>
+            <h1>A better solution?</h1>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Why not hire a monkey?</h1>
+          </section>
+          <section data-state="soothe">
+            <h1>Advantages</h1>
+            <ul>
+              <li>You pay him with banana</li>
+              <li>It will do any stupid task</li>
+              <li>It could repeat action as long as you give bananas</li>
+            </ul>
+          </section>
+          <section data-state="alert">
+            <h1>Drawbacks</h1>
+            <ul>
+              <li>It's a monkey ;-)</li>
+              <li>Training time</li>
+              <li>It could be loud</li>
+              <li>The office is not suitable</li>
+            </ul>
+          </section>
+          <section>
+            <h1>So let's find a better solution...</h1>
+          </section>
+        </section>
+        <section>
+          <h1>BDD*</h1>
+          <h2>* Behavior-driven development</h2>
+        </section>
+        <!-- Example of nested vertical slides -->
+        <section>
+          <section>
+            <h1>Cucumber</h1>
+          </section>
+          <section>
+          <blockquote >
+            It's a hight level framework testing
+          </blockquote >
+          <p><a href="http://cukes.info/">See more here</a> </p>
+          </section>
+          <section>
+            <h2>Let's see</h2>
+<pre><code class="ruby">
+# language: en
+Feature: Addition
+  In order to avoid silly mistakes
+  As a math idiot 
+  I want to be told the sum of two numbers
+
+  Scenario Outline: Add two numbers
+    Given I have entered &lt;input_1&gt; into the calculator
+    And I have entered &lt;input_2&gt; into the calculator
+    When I press &lt;button&gt;
+    Then the result should be &lt;output&gt; on the screen
+  Examples:
+    | input_1 | input_2 | button | output |
+    | 20      | 30      | add    | 50     |
+    | 2       | 5       | add    | 7      |
+    | 0       | 40      | add    | 40     |
+</code></pre>
+          </section>
+          <section data-state="soothe">
+            <h1>Advantages</h1>
+            <ul>
+              <li>The syntax is really similar to a real User-story</li>
+              <li>High level testing</li>
+            </ul>
+          </section>
+          <section data-state="alert">
+            <h1>Drawbacks</h1>
+            <ul>
+              <li>Syntax could need to be learned</li> 
+              <li>Syntax ha no link with ruby</li>
+              <li>Need to be learned</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Rspec with sugar*</h1>
+            <h3>* Capybara, Selenium-webdriver, Factory_girl_rails, ...</h3>
+          </section>
+          <section>
+          <blockquote >
+              Framework for testing developer friendly and easy to read.
+            </blockquote >
+          </section>  
+          <section>
+            <h2>Let's see</h2>
+          <pre> <code class="ruby">
+  describe "Search /blog" do
+    it "should be able to search into the blog database" do
+      post = FactoryGirl.create(:post)
+      post2 = FactoryGirl.create(:post, title: 'other staff' )
+      visit home_path
+      fill_in 'search', :with => 'article top'
+      click_on 'Search'
+      page.should have_content("article top")
+    end
+  end
+end
+          </code></pre>
+          </section>
+          <section data-state="soothe">
+            <h1>Advantages</h1>
+            <ul>
+              <li>Really flexible allow hight level testing and unit test</li>
+              <li>With the sugar test case are easy to read for non developer</li>
+              <li>Close to the ruby</li>
+              <li>Could be integrate with Selenium</li>
+            </ul>
+          </section>
+          <section data-state="alert">
+            <h1>Drawbacks</h1>
+            <ul> 
+              <li>Need to understand Ruby</li> 
+            </ul>
+          </section>
+        </section>
+        <section>
+          <blockquote>
+            We've heard that a million monkeys at a million keyboards could produce the complete works of Shakespeare; now, thanks to the Internet, we know that is not true
+          </blockquote>
+          <p class="source">Robert Wilensky</p>
+        </section>
+        <section>
+          <h1>Question?</h1>
+        </section>
+        <section>
+          <h1>THE END</h1>
+          <h3>BY Fabien Garcia</h3>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40207968-1', 'github.io');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>

@@ -1,326 +1,134 @@
-<!doctype html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
+    <title>Template &middot; Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <title>Promise with JS</title>
+    <!-- Le styles -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 60px;
+      }
 
-    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-    <meta name="author" content="Hakim El Hattab">
+      /* Custom container */
+      .container {
+        margin: 0 auto;
+        max-width: 1000px;
+      }
+      .container > hr {
+        margin: 60px 0;
+      }
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 80px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 100px;
+        line-height: 1;
+      }
+      .jumbotron .lead {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
 
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
 
-    <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+      /* Customize the navbar links to be fill the entire space of the .navbar */
+      .navbar .navbar-inner {
+        padding: 0;
+      }
+      .navbar .nav {
+        margin: 0;
+        display: table;
+        width: 100%;
+      }
+      .navbar .nav li {
+        display: table-cell;
+        width: 1%;
+        float: none;
+      }
+      .navbar .nav li a {
+        font-weight: bold;
+        text-align: center;
+        border-left: 1px solid rgba(255,255,255,.75);
+        border-right: 1px solid rgba(0,0,0,.1);
+      }
+      .navbar .nav li:first-child a {
+        border-left: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .navbar .nav li:last-child a {
+        border-right: 0;
+        border-radius: 0 3px 3px 0;
+      }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="lib/js/html5shiv.js"></script>
+      <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
   <body>
 
-    <div class="reveal">
+    <div class="container">
 
-      <!-- Any section element inside of this container is displayed as a slide -->
-      <div class="slides">
-
-        <section data-state="pink">
-          <h1>Promise in Js</h1>
-          <h3>With Ken and Barbie</h3>
-          <p>
-            <small>Created by <a href="http://fabbook.fr">Fabien Garcia</a></small>
-          </p>
-          <a href="#/2" class="image">
-            <img  height="238" src="http://25.media.tumblr.com/tumblr_lgligso2ae1qetts3o1_500.jpg">
-          </a>
-        </section>
-
-        <section>
-          <h1>What is a promise?</h1>
-          <blockquote >
-            a declaration that something will or will not be done, given, etc., by one
-          </blockquote >
-          <p class="source">dictionary.com</p>
-        </section>
-
-        <!-- Example of nested vertical slides -->
-        <section data-state="pink">
-          <section>
-            <h1>The story of ken and barbie</h1>
-          </section>
-          <section>
-            <h2>Let's take Ken and Barbie:</h2>
-            <pre><code class="javascript">
-ken = new PerfectMan()
-barbie = new PerfectWoman()
-          </code></pre>
-          </section>
-          <section>
-            <h2>They met and ken propose to barbie</h2>
-            <p>So this is the classic process</p>
-            <pre><code class="javascript">
-ken.marry(barbie)
-          </code></pre>
-          </section>
-          <section>
-            <h2>But what happen for real?</h2>
-            <pre><code class="javascript">
-ken.marry(barbie)
-  .then => ken.find(job)
-  .then => child = Sex(ken, barbie)
-  .then (child) => ken.takeCare(child); barbie.takeCare(child)
-  .then => ken.die()
-  .then => barbie.die()
-          </code></pre>
-          </section>
-        </section>
-        <section data-state="soothe">
-          <section>
-            <h1>The story of normal people</h1>
-          </section>
-          <section>
-            <h2>Have you met Ted?</h2>
-            <pre><code class="javascript">
-ted = new Man()
-robin = new Woman()
-            </code></pre>
-            <p>Ted want to marry but Robin not really ...</p>
-          </section>
-          <section>
-            <h2>What happen when they met?</h2>
-            <pre><code class="javascript">
-ted.marry(robin)
-  .then => ted.find("job")
-  .fail => robin = ted.find("otherWoman")
-  .then => child = Sex(ken, robin)
-  .then (child) => ken.takeCare(child); robin.takeCare(child)
-  .then => ken.die()
-  .then => barbie.die()
-  .fail => HIMYM = Factory("serie")
-            </code></pre>
-          </section>
-          <section>
-        <h2>If you want to have barbie</h2>
-          
-          <pre><code class="javascript">
-me = new Man()
-barbie = new PerfectWoman()
-          </code></pre>
-          </section>
-          <section>
-            <h2>you are not Ken, so you will have to work hard</h2>
-            <pre><code class="jacascript">
-$.when(me.find("job"), me.do("sport"), 
-  me.earn("money"), me.do("surgery"))
-  .then => me.marry(barbie)
-  .then => child = Sex(me, barbie)
-  .then(child) => me.takeCare(child)
-  .then => me.die()
-  .then => barbie.die()
-  .fail(error) => me.find("otherWoman")
-            </code></pre>
-          </section>
-        </section>
-        <section>
-          <h1>So what is the link with JS?</h1>
-        </section>
-        <section>
-          <h1>It's the same thing!</h1>
-          <p>Code is just a story</p>
-        </section>
-        <section>
-          <section>
-            <h1>Some examples</h1>
-          </section>
-          <section>
-          <h2>Classic workflow in node</h2>
-          <pre><code class="javascript">
-user.findWhere(name:"john").success(user) ->
-  Email.send(user.email).success(response) ->
-    fs.write response, (status) ->
-      user.save(status: "message send"). success(err, res) ->
-        console.log "workflow finished"
-          </code></pre>
-          </section>
-          <section>
-            <h2>It will be</h2>
-            <pre><code class="javascript">
-user.findWhere(name:"john")
-  .then (user) -> Email.send(user.email)
-  .then (response) -> fs.write response
-  .then (status) -> user.save(status: "message send")
-  .then (status) -> console.log "Workflow finished" 
-          </code></pre>
-          </section>
-          <section>
-            <h2>If you need data in several place</h2>
-            <h3>Example with backbone</h3>
-            <pre><code class="javascript">
-checkAllFetched = (collection) =>
-  collection.fetched = true
-  if @collection1.fetched and @collection2.fetched
-    @prepareData()
-fetchOptions =
-  success: checkAllFetched
-  data: @params
-@collection1.fetch fetchOptions
-@collection2.fetch fetchOptions
-            </code></pre>
-          </section>
-          <section>
-            <h2>turn with promise</h2>
-            <pre><code class="javascript">
-$.when(@collection1.fetch(data: @params), 
-  @collection2.fetch(data: @params))
-  .done => @prepareData()
-            </code></pre>
-          </section>
-        </section>
-        <section>
-          <section>
-          <h1>How to convert into a promise?</h1>
-          <h2>With <a href="http://documentup.com/kriskowal/q/">Q</a></h2>
-          </section>
-          <section>
-            <h2>classic database search with node</h2>
-            <pre><code class="javascript">
-find: (email, callback) ->
-  @query "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email, (err, res) ->
-    callback err, res[0]
-            </code></pre>
-          </section>
-          <section>
-            <h2>Turn into promise</h2>
-            <pre><code class="javascript">
-find: (email) ->
-  deferred = Q.defer()
-  @query "SELECT `id`, `email` WHERE email = `?` LIMIT 1", 
-    email, (err, res) ->
-    if err
-      deferred.reject new Error(err)
-    else
-      deferred.resolve res
-  return deferred.promise
-          </code></pre>
-          </section>
-          <section>
-            <h2>shorter notation</h2>
-            <pre><code class="javascript">
-find (email) ->
-Q.nfcall @query, "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
-            </code></pre>
-            <p>or</p>
-            <pre><code class="javascript">
-find (email) ->
-Q.ninvoke @, "query", "SELECT `id`, `email` WHERE email = `?` LIMIT 1", email 
-            </code></pre>
-          </section>
-        </section>
-        <section>
-          <section>
-            <h1>How to convert into a promise?</h1>
-            <h2>With <a href="http://jquery.com/">jQuery</a></h2>
-          </section>
-          <section>
-            <h2>It is here since jQuery 1.5</h2>
-            <h3>With the object <a href="http://api.jquery.com/deferred.promise/">defered</a></h3>
-          </section>
-          <section>
-            <h2>Turn async function into promise</h2>
-            <pre><code class="javascript">
-promiseFunc = ->
-  deferred = new jQuery.Deferred()
-  ayncFunction param, (err, res) ->
-    if err
-      deferred.reject err
-    else
-      deferred.resolve res
-  return deferred.promise()
-            </code></pre>
-            <p>It will be used </p>
-            <pre><code class="javascript">
-$.when(promiseFunc).then ((res) ->
-  alert status + ", things are going well"
-            </code></pre>
-          </section>
-          <section>
-            <h2>With existing jQuery method</h2>
-            <pre><code class="javascript">
-$.when($.get("http://url.com"))
-  .then (data) ->
-    alert data + ", things are going well"
-  .fail (err) ->
-    console.log err
-            </code></pre>
-          </section>
-        </section>
-        <section>
-          <h2>Links</h2>
-          <ul>
-            <li><a href="https://github.com/garciaf/article">Presentation + article</a></li>
-            <li><a href="http://documentup.com/kriskowal/q/">Q node</a></li>
-            <li><a href="http://api.jquery.com/category/deferred-object/">Deferred object jQuery</a></li>
-          </ul>
-        </section>
-        <section>
-          <h1>Question?</h1>
-        </section>
-        <section>
-          <h1>THE END</h1>
-          <h3>BY Fabien Garcia</h3>
-        </section>
-
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>Article from garciaf</h1>
+        <p class="lead">Some article and presentation about javascript and ruby explained in funny way</p>
       </div>
 
-    </div>
+      <hr>
 
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.min.js"></script>
+      <!-- Example row of columns -->
+      <div class="row-fluid">
+        <div class="span4">
+          <h2>Promise in Js</h2>
+          <h3>Explain with ken & Barbie</h3>
+          <p>A small presentation to show how promise works in javascript world (server and client side) and a little talk about Barbie and Ken (Bonus ted from HIMYM!)</p>
+          <p><a class="btn btn-success" href="presentation/promise.html">Details &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>Hire a monkey to test</h2>
+          <h3>How and why testing your rails application</h3>
+          <p>Why should we test an application what the benefit of it ? It's not better to hire a monkey?</p>
+          <p><a class="btn btn-success" href="presentation/testing.html">Details &raquo;</a></p>
+       </div>
+     </div>
+      <hr>
 
-    <script>
+      <div class="footer">
+        <p>&copy; Fabien Garcia 2013</p>
+      </div>
 
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-
-        transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-        // Optional libraries used to extend on reveal.js
-        dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-        ]
-      });
-
-    </script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-40207968-1', 'github.io');
-  ga('send', 'pageview');
-
-</script>
+    </div> <!-- /container -->  
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   </body>
 </html>
